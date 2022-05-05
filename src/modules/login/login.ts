@@ -35,6 +35,7 @@ export default class Login extends Vue {
         try {
             this.isAuthLoading = true;
             const token = await loginByAuth(this.email, this.password);
+            alert(token);
             this.$store.dispatch('auth/login', token);
             this.toast.success('Login succeeded');
             this.isAuthLoading = false;

@@ -3,8 +3,9 @@
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
             <router-link to="/" class="h1"
-                ><b>{{ $t("labels.admin") }}</b>{{ $t("labels.lte")
-                }}</router-link
+                >
+                <b>Dress Rental System</b>
+                </router-link
             >
         </div>
         <div class="card-body">
@@ -14,8 +15,8 @@
                 <app-input
                     icon="envelope"
                     class="mb-3"
-                    type="email"
-                    placeholder="Email"
+                    type="text"
+                    placeholder="Username"
                     autocomplete="off"
                     v-model="email"
                 />
@@ -50,7 +51,7 @@
                 </div>
             </form>
 
-            <div class="social-auth-links text-center mt-2 mb-3">
+            <!-- <div class="social-auth-links text-center mt-2 mb-3">
                 <app-button
                     class="btn-primary"
                     icon="facebook"
@@ -71,10 +72,10 @@
                 >
                     {{ $t("labels.SignInUsingGoogle") }}
                 </app-button>
-            </div>
+            </div> -->
             <!-- /.social-auth-links -->
 
-            <p class="mb-1">
+            <!-- <p class="mb-1">
                 <router-link to="/forgot-password">
                     {{ $t("labels.forgotPassword") }}
                 </router-link>
@@ -83,7 +84,7 @@
                 <router-link to="/register" class="text-center">
                     {{ $t("labels.registerMembership") }}
                 </router-link>
-            </p>
+            </p> -->
         </div>
         <!-- /.card-body -->
     </div>
