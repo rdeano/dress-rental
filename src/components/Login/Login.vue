@@ -67,8 +67,7 @@
 </template>
 
 <script lang="ts">
-document.body.classList.add('hold-transition')
-document.body.classList.add('login-page')
+
 
 import { defineComponent } from 'vue';
 

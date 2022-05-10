@@ -81,7 +81,7 @@ import  Aside  from '@/components/Aside.vue'
 import  Footer  from '@/components/Footer.vue'
 
 export default defineComponent({
-  name: 'HelloWorld',
+  name: 'Home',
   components: {
     Navbar,
     Aside,
