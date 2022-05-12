@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import store from '@/store/index';
 import Login from '@/components/Login/Login.vue'
 import Home from '../views/Home.vue'
 
@@ -6,12 +7,15 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
   },
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/about',
@@ -26,6 +30,14 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to,from,next) => {
+  if (to.meta.requiresAuth && store.state.authenticated == false) {
+    next('/login');
+} else {
+    next();
+  }
 })
 
 export default router

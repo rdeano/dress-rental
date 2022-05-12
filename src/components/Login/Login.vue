@@ -8,9 +8,13 @@
         <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="../../index3.html" method="post">
+        <form @submit="signin()">
+             <div class="alert alert-danger" v-if="error">
+                Invalid Username or Password
+            </div>
+
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username">
+            <input type="email" v-model="email" class="form-control" placeholder="email">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -18,7 +22,7 @@
             </div>
             </div>
             <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" v-model="password" class="form-control" placeholder="Password">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -36,7 +40,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block" @click="signin()">Sign In</button>
             </div>
             <!-- /.col -->
             </div>
@@ -68,12 +72,59 @@
 
 <script lang="ts">
 
-
-import { defineComponent } from 'vue';
+import axios from 'axios'
+import sweetalert2 from 'sweetalert2'
+import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
     name : 'Login',
+    components: {},
+    setup() {
+        const email = ref('');
+        const password = ref('')
+        const error = ref(false);
 
+        function signin() { 
+            event?.preventDefault();
+            let data = {
+                email : email.value,
+                password : password.value
+            }
+
+            axios.post('login',data)
+                .then(
+                    res => {
+                        document.body.classList.remove('hold-transition')  
+                        document.body.classList.remove('login-page')
+
+                        //@ts-ignore
+                        this.$store.commit("setAuthentication",true)
+                        //@ts-ignore
+                        this.$router.push('home')
+                    }
+                ).catch(
+                    err => {
+                        console.log(err);
+                        error.value = true;
+                    }
+                )           
+        }
+
+        watch(email,(newVal) => {
+            error.value = false;
+        })
+
+        watch(password,(newVal) => {
+            error.value = false;
+        })
+
+        return {
+            email,
+            password,
+            signin,
+            error
+        }
+    }
    
 })
 </script>
