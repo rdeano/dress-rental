@@ -94,11 +94,15 @@ export default defineComponent({
             axios.post('login',data)
                 .then(
                     res => {
-                        document.body.classList.remove('hold-transition')  
+                        console.log(res);
+                        let token = res.data.token;
+                        localStorage.setItem('token', token);                        
+
                         document.body.classList.remove('login-page')
 
                         //@ts-ignore
                         this.$store.commit("setAuthentication",true)
+
                         //@ts-ignore
                         this.$router.push('home')
                     }

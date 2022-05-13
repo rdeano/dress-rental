@@ -75,7 +75,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+document.body.classList.add('sidebar-mini')
+
+import { defineComponent, onMounted } from 'vue';
 import  Navbar  from '@/components/Navbar.vue'
 import  Aside  from '@/components/Aside.vue'
 import  Footer  from '@/components/Footer.vue'
@@ -90,6 +92,14 @@ export default defineComponent({
   props: {
     msg: String,
   },
+  setup() {
+    onMounted(() => {
+      //@ts-ignore
+      $('[data-widget="treeview"]').Treeview('init');
+    })
+
+  },
+
 });
 </script>
 
