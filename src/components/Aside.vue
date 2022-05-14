@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
+            <a href="javascript:void(0)" @click="logout" class="nav-link">
               <i class="nav-icon fas fa-arrow-circle-right"></i>
               <p>
                 Logout
@@ -113,6 +113,7 @@
 <script lang="ts">
 
 
+import axios from 'axios'
 import { defineComponent,onMounted } from 'vue';
 
 
@@ -120,6 +121,31 @@ export default defineComponent({
     name : 'Aside',
     setup() {
 
+      function logout() {
+
+        axios.post('logout')
+          .then(
+            res => {
+              localStorage.removeItem("token")
+
+              document.body.classList.add('login-page')
+
+              //@ts-ignore
+              this.$store.commit("setAuthentication",false)
+
+              //@ts-ignore
+              this.$router.push('login')
+            }
+          ).catch(
+            err => {
+              console.log(err)
+            }
+          )
+      }
+
+      return {
+        logout
+      }
     },
 
     

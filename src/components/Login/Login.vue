@@ -95,9 +95,10 @@ export default defineComponent({
                 .then(
                     res => {
                         console.log(res);
-                        let token = res.data.token;
-                        localStorage.setItem('token', token);                        
-
+                        let token = res.data.token;                    
+                        
+                        localStorage.removeItem("token");
+                        localStorage.setItem("token",token);
                         document.body.classList.remove('login-page')
 
                         //@ts-ignore
@@ -109,7 +110,7 @@ export default defineComponent({
                 ).catch(
                     err => {
                         console.log(err);
-                        error.value = true;
+                        // error.value = true;
                     }
                 )           
         }
