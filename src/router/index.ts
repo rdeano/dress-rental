@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '@/store/index';
 import Login from '@/components/Login/Login.vue'
+import Category from '@/components/Category/Category.vue'
 import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -21,6 +22,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'Home',
     component: Home,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: Category,
     meta: {
       requiresAuth: true
     }

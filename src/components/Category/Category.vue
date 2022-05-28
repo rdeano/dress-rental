@@ -1,5 +1,5 @@
 <template>
- <!-- Site wrapper -->
+     <!-- Site wrapper -->
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Category</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -32,8 +32,8 @@
 
       <!-- Default box -->
       <div class="card">
-        <!-- <div class="card-header">
-          <h3 class="card-title">Title</h3>
+        <!-- <div class="card-header"> -->
+          <!-- <h3 class="card-title">Category</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -42,8 +42,8 @@
             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
               <i class="fas fa-times"></i>
             </button>
-          </div>
-        </div> -->
+          </div> -->
+        <!-- </div> -->
         <div class="card-body">
           Start creating your amazing application!
         </div>
@@ -71,55 +71,24 @@
   <!-- Footer -->
   <Footer />
 </div>
-<!-- ./wrapper -->
 </template>
 
 <script lang="ts">
-document.body.classList.add('sidebar-mini')
 
 import { defineComponent, onMounted } from 'vue';
 import  Navbar  from '@/components/Navbar.vue'
 import  Aside  from '@/components/Aside.vue'
 import  Footer  from '@/components/Footer.vue'
-import axios from 'axios';
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-    Navbar,
-    Aside,
-    Footer
-  },
-  props: {
-    msg: String,
-  },
-  setup() {
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+    name : 'Category',
+    components: {
+        Navbar,
+        Aside,
+        Footer
+    },
+})
 
-    onMounted(() => {
-      //@ts-ignore
-      $('[data-widget="treeview"]').Treeview('init');
-    })
 
-  },
 
-});
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

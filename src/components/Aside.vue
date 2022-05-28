@@ -14,7 +14,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
+            <a href="javascript:void(0)" @click="goToPage('home')" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -22,7 +22,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
+            <a href="javascript:void(0)" @click="goToPage('category')" class="nav-link">
               <i class="nav-icon fas fa-address-book"></i>
               <p>
                 Dress Category
@@ -143,8 +143,14 @@ export default defineComponent({
           )
       }
 
+      function goToPage(page:string) {
+        //@ts-ignore
+        this.$router.push(page)
+      }
+
       return {
-        logout
+        logout,
+        goToPage
       }
     },
 

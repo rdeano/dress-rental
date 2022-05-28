@@ -110,7 +110,7 @@ export default defineComponent({
                 ).catch(
                     err => {
                         console.log(err);
-                        // error.value = true;
+                        error.value = true;
                     }
                 )           
         }
